@@ -6,18 +6,23 @@ HEADER = ./includes/
 
 FLAG = -Wall -Wextra -Werror
 
-OPTION = -I $(HEADER)
+OPTION = -c -I $(HEADER)
 
 SRC = $(PATH_SRC)string.cpp $(PATH_SRC)strlen.cpp
 
-OBJ = string.o strlen.o
+OBJ = $(SRC:.c=.o)
+
+.c.o:
+	g++ $(FLAG) -I includes $< -o ${<:.c=.o}
+
+
+$(NAME): ${OBJ}
+		
 
 all: $(NAME)
 
-$(NAME):
-		g++ $(FLAG) $(OPTION) $(SRC) -o proga 
-
 clean:
-		rm -f $(OBJ)
+		rm -f $(OBJ) $(NAME)
+
 fclean: clean
 				
