@@ -1,19 +1,21 @@
+NAME = proga
+
 PATH_SRC = ./src/
 
 HEADER = ./includes/
 
 FLAG = -Wall -Wextra -Werror
 
-OPTION = -c -I $(HEADER)
+OPTION = -I $(HEADER)
 
-SRC = $(PATH_SRC)string.cpp
+SRC = $(PATH_SRC)string.cpp $(PATH_SRC)strlen.cpp
 
-OBJ = string.o
+OBJ = string.o strlen.o
 
-all: $(OBJ)
+all: $(NAME)
 
-$(OBJ):
-		g++ $(FLAG) $(OPTION) $(SRC)
+$(NAME):
+		g++ $(FLAG) $(OPTION) $(SRC) -o proga 
 
 clean:
 		rm -f $(OBJ)

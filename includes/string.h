@@ -3,12 +3,18 @@
 
 #include <iostream>
 
+int strlen(char *);
+
 class String
 {
     public:
+        String() {}
+        String(char *str);
+        char * GetString();
 
     private:
-}
+        char * itsString;
+};
 
 
 
