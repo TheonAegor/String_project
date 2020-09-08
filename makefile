@@ -10,9 +10,9 @@ SRC = $(PATH_SRC)string.cpp
 
 OBJ = string.o
 
-all: $(NAME)
+all: $(OBJ)
 
-$(NAME):
+$(OBJ):
 		g++ $(FLAG) $(OPTION) $(SRC)
 
 clean:
