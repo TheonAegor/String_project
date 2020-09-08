@@ -23,4 +23,5 @@ int main()
 {
     char words[] = {"hello world"};
     String str(words);
+    std::cout << "This is end of main\n";
 }
