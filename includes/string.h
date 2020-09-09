@@ -10,10 +10,13 @@ class String
     public:
         String() {}
         String(char *str);
-        char * GetString();
+        String(const String &);
+        char * GetString() const;
+        int GetLen() const { return itsLen; }
 
     private:
         char * itsString;
+        int itsLen;
 };
 
 
