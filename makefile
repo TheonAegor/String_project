@@ -1,28 +1,7 @@
-NAME = proga
+string.o: ./src/string.cpp
+	g++ -c $< -o string.o ./includes/string.h
+strlen.o: ./src/strlen.cpp
+	g++ -c $< -o strlen.o ./includes/string.h
 
-PATH_SRC = ./src/
-
-HEADER = ./includes/
-
-FLAG = -Wall -Wextra -Werror
-
-OPTION = -c -I $(HEADER)
-
-SRC = $(PATH_SRC)string.cpp $(PATH_SRC)strlen.cpp
-
-OBJ = $(SRC:.c=.o)
-
-.c.o:
-	g++ $(FLAG) -I includes $< -o ${<:.c=.o}
-
-
-$(NAME): ${OBJ}
-		
-
-all: $(NAME)
-
-clean:
-		rm -f $(OBJ) $(NAME)
-
-fclean: clean
-				
+proga: string.o strlen.o
+	g++ -o proga strlen.o string.o ./includes/string.h
