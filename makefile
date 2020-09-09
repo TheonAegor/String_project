@@ -1,28 +1,29 @@
+#!/bin/bash
+
 NAME = proga
 
-PATH_SRC = ./src/
+CFLAGS = -Wall -Wextra -Werror
 
-HEADER = ./includes/
+PATH = src/
 
-FLAG = -Wall -Wextra -Werror
+RM = rm -f
 
-OPTION = -c -I $(HEADER)
+SRC = ${PATH}string.cpp ${PATH}strlen.cpp
 
-SRC = $(PATH_SRC)string.cpp $(PATH_SRC)strlen.cpp
+OBJ:= string.o strlen.o
 
-OBJ = $(SRC:.c=.o)
+.PHONY: all clean
 
-.c.o:
-	g++ $(FLAG) -I includes $< -o ${<:.c=.o}
+string.o: ${PATH}string.cpp
+	g++ -c ${CFLAGS} $< -o $@
 
+strlen.o: ${PATH}strlen.cpp
+	g++ -c ${CFLAGS} $< -o $@
 
-$(NAME): ${OBJ}
-		
+${NAME}: ${OBJ}
+	g++ -o $@ ${OBJ}
 
-all: $(NAME)
+all: ${NAME}
 
 clean:
-		rm -f $(OBJ) $(NAME)
-
-fclean: clean
-				
+		${RM} ${OBJ} 
