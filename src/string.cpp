@@ -1,5 +1,14 @@
 #include "string.h"
 
+void ShowMassOfChar(char *str)
+{
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        std::cout << str[i];
+    }
+    std::cout << std::endl;
+}
+
 String::String(char *str)
 {
     int len;
@@ -9,12 +18,12 @@ String::String(char *str)
     len = strlen(str);
     itsString = new char[len+1];
     itsLen = len;
-    std::cout << "str itsLen = " << itsLen << std::endl;
     for (i = 0; i < len; i++)
     {
         itsString[i] = str[i];
     }
     itsString[i] = '\0';
+//    ShowMassOfChar(itsString);
 }
 
 String::String(const String & rhs)

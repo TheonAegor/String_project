@@ -12,5 +12,5 @@ $(EXECTUABLE): $(OBJ)
 	g++ -I includes -c $< -o $@
 
 clean:
-	rm -f *.o proga
+	rm -f ${OBJ} proga
 
