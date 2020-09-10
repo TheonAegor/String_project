@@ -9,6 +9,13 @@ void ShowMassOfChar(char *str)
     std::cout << std::endl;
 }
 
+String::String(int len)
+{
+    for (int i = 0; i < len; i++)
+            itsString[i] = '\0';
+    itsLen = len;
+}
+
 String::String(char *str)
 {
     int len;
@@ -43,26 +50,18 @@ String String::operator+(const String &rhs)
 {
     int i;
     int j;
-    char temp[itsLen + 1];
+    String temp(itsLen + rhs.GetLen());
 
  //   this->itsLen = this->itsLen + rhs.GetLen();
     std::cout << "\n\tThis is start of + operator\n";
-    for (i = 0; i < this->itsLen; i++)
-        temp[i] = itsString[i];
-    temp[i] = '\0';
-    delete [] this->itsString;
-    this->itsString = 0;
-    this->itsString = new char[this->itsLen + rhs.GetLen() + 1];
-    for (j = 0; j < this->itsLen; j++)
-        this->itsString[j] = temp[j];
-    for (int i = 0; i < rhs.GetLen(); i++, j++)
-    {
-        this->itsString[j] = rhs.GetString()[i];
-    }
-    this->itsString[j] = '\0';
-    std::cout << this->itsString << std::endl;
+    for (j = 0;j < this->itsLen; j++)
+        temp[j] = itsString[j];
+    for (i = 0; i < rhs.GetLen(); i++, j++)
+        temp[j] = rhs.GetString()[i];
+    temp[j] = '\0';
+    std::cout << temp.GetString() << std::endl;
     std::cout << "\tThis is end of + operator\n\n";
-    return *this;
+    return temp;
 }
 
 String &String::operator=(const String &rhs)
@@ -76,6 +75,15 @@ String &String::operator=(const String &rhs)
         itsString[i] = rhs.GetString()[i];
     itsString[i] = '\0';
     return *this;
+}
+char & String::operator[](int index)
+{
+    return itsString[index];
+}
+
+char String::operator[](int index) const
+{
+   return itsString[index]; 
 }
 
 char * String::GetString() const 
@@ -104,9 +112,11 @@ int main()
     String str2(lol);
     String temp;
 
-    str2 = str;
-    Show(str2);
+   // temp = str + str2;
+   // Show(temp);
+    Show(str2 + str);
     Show(str);
+    std::cout << str[0] << std::endl;
 //    Show(temp);
 
     std::cout << "This is end of main\n";
