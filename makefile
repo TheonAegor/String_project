@@ -1,10 +1,16 @@
-string.o: ./src/string.cpp
-	g++ -c  -o string.o ./src/string.cpp -I includes
-strlen.o: ./src/strlen.cpp
-	g++ -c  -o strlen.o ./src/strlen.cpp -I includes
+EXECTUABLE = proga
+SRC = ./src/string.cpp ./src/strlen.cpp
+OBJ = $(SRC:.cpp=.o)
 
-proga: string.o strlen.o
-	g++ -o proga strlen.o string.o 
+
+all: $(SRC) $(EXECTUABLE)
+
+$(EXECTUABLE): $(OBJ)
+	g++ $(OBJ) -I includes -o $@
+
+.cpp.o: 
+	g++ -I includes -c $< -o $@
 
 clean:
 	rm -f *.o proga
+
