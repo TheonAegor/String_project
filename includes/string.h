@@ -11,6 +11,8 @@ class String
         String() {}
         String(char *str);
         String(const String &);
+        String operator+(const String &rhs);
+        String &operator=(const String &rhs);
         char * GetString() const;
         int GetLen() const { return itsLen; }
 
