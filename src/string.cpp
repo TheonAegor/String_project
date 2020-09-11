@@ -1,4 +1,4 @@
-#include "string.h"
+#include "MyString.h"
 
 void ShowMassOfChar(char *str)
 {
@@ -11,9 +11,15 @@ void ShowMassOfChar(char *str)
 
 String::String(int len)
 {
-    for (int i = 0; i < len; i++)
-            itsString[i] = '\0';
+	int i;
+
+	std::cout << "\tString(int)\n";
     itsLen = len;
+    itsString = new char[itsLen + 1];
+    for (i = 0; i < len; i++)
+            itsString[i] = '\0';
+	itsString[i] = '\0';
+	std::cout << "\tEnd of String(int)\n";
 }
 
 String::String(char *str)
@@ -112,8 +118,8 @@ int main()
     String str2(lol);
     String temp;
 
-   // temp = str + str2;
-   // Show(temp);
+   temp = str + str2;
+   Show(temp);
     Show(str2 + str);
     Show(str);
     std::cout << str[0] << std::endl;
